@@ -1,0 +1,44 @@
+SSE = Server Sent Events 
+
+Flow  = connection flows from server to client 
+support  = it is supported by all browsers 
+
+Definanation 
+SSE is protocol 
+Sse protocol which help use to make persisitent and alive  unidirectional connection between the server and client 
+
+
+How the sse works
+SSE works by making persisitent and open  HTTP connection   between  the server and client.
+
+Connection type  = unidirectional 
+The connection keep alive untill it is closed from server
+The connection from client to server will auto sync once it is made from client 
+Here the server can sent message from server to client  but client cannot sent message to server 
+Here the client and server  both can close connection at any point of time 
+client site  = eventSource.close();
+server site = response.end();
+
+
+Response Headers sync 
+res.writeHead(200, {
+    "Connection": "keep-alive",
+    "Content-Type": "text/event-stream",
+    "Cache-Control": "no-cache",
+});
+
+
+client site 
+EventSource interface is used make persistent  open connection between server and client 
+eventssource  options 
+withCredentials =  to setup the cors policy 
+There will be an event listners for events  sent by the  server 
+
+
+Use Case 
+SSE is used to file  uploading progress 
+SSE is used  any where we need to track the progress and events happning over the backend 
+
+Compression case  server site 
+The compression middleware used to  compress the response
+res.flush() method to force the partially-compressed response to be flushed to the client.
